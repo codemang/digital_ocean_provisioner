@@ -16,9 +16,9 @@ To set up a new DigitalOcean droplet, do the following:
       user. The root user's SSH keys are only set if you choose the SSH key
       authentication method.**
 
-1. SSH into your new droplet: `ssh root@IP-ADDRESS`
+1. SSH into your new droplet: `ssh root@IP-ADDRESS`.
 
-1. Run the setup script. **Make sure to replace "username" at the end of the
+1. Run the set up script. **Make sure to replace "username" at the end of the
   statement with the username you want to use for the new user on the droplet**:
 
     ```bash
@@ -33,4 +33,20 @@ To set up a new DigitalOcean droplet, do the following:
         HostName IP-ADDRESS
         User USERNAME
         Port 22
+    ```
+
+## Installing Docker
+
+1. Run the Docker set up script.
+
+    ```bash
+    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_docker.sh | bash
+    ```
+
+## Adding a GitHub SSH Key
+
+1. Run the set up set up script.
+
+    ```bash
+    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_github_ssh_key.sh | bash
     ```
