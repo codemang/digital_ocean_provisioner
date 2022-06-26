@@ -9,6 +9,10 @@ username=$1
 email=$2
 
 curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_new_droplet.sh | bash -s $username
-curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_docker.sh | bash
-curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_github_ssh_key.sh | bash
-curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_nginx_proxy.sh | bash -s $email
+
+su $username -c "curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_docker.sh | bash"
+su $username -c "curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_github_ssh_key.sh | bash"
+
+# We need to first cd into the home directory before running this script, since
+# it creates a proxy directory for us.
+su $username -c "cd && curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_nginx_proxy.sh | bash -s $email"

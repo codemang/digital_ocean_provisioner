@@ -33,6 +33,3 @@ sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'
 # https://docs.digitalocean.com/products/monitoring/how-to/install-agent/
 echo "Enabling advanced metrics."
 curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash
-
-su $username # Switch to that user.
-cd ~

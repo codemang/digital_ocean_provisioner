@@ -13,3 +13,5 @@ email=$2
 su $username -c "./setup_docker.sh"
 su $username -c "./setup_github_ssh_key.sh"
 su $username -c "./setup_nginx_proxy.sh $email"
+
+su nate -c "./setup_docker.sh"
