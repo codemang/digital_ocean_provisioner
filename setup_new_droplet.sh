@@ -29,3 +29,7 @@ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4024
 sudo /sbin/mkswap /var/swap.1
 sudo /sbin/swapon /var/swap.1
 sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'
+
+# https://docs.digitalocean.com/products/monitoring/how-to/install-agent/
+echo "Enabling advanced metrics."
+curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash
