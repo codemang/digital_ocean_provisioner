@@ -9,6 +9,7 @@ username=$1
 email=$2
 
 ./setup_new_droplet.sh $username
-./setup_docker.sh
-./setup_github_ssh_key.sh
-./setup_nginx_proxy.sh $email
+
+su $username -c "./setup_docker.sh"
+su $username -c "./setup_github_ssh_key.sh"
+su $username -c "./setup_nginx_proxy.sh $email"
