@@ -12,10 +12,16 @@ sudo apt -y install docker-ce
 
 echo "Setting up Docker to not require sudo."
 sudo usermod -aG docker ${USER}
-su - ${USER}
 
 # Commands from this guide.
 # https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04
 echo "Installing docker-compose"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+# https://unix.stackexchange.com/a/273348
+script_dir="${0%/*}"
+
+# Update the UFW config to block Docker ports from being publicly accessible.
+# https://github.com/moby/moby/issues/4737#issuecomment-419705925
+cat $script_dir/../config/docker_ufw_rules | sudo tee -a /etc/ufw/after.rules

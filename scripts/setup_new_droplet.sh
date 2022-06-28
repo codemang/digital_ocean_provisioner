@@ -18,6 +18,7 @@ passwd -d $username
 usermod -aG sudo $username
 
 echo "Setting up a basic firewall."
+sudo ufw default deny incoming
 ufw allow OpenSSH
 ufw --force enable
 

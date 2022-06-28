@@ -6,5 +6,6 @@ if [[ $# -eq 0 ]]; then
 fi
 
 email=$1
+cd ~
 git clone --recurse-submodules https://github.com/evertramos/nginx-proxy-automation.git proxy
 cd proxy/bin && ./fresh-start.sh --yes -e $email --skip-docker-image-check
