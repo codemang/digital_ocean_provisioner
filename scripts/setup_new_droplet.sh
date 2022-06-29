@@ -18,9 +18,12 @@ passwd -d $username
 usermod -aG sudo $username
 
 echo "Setting up a basic firewall."
-sudo ufw default deny incoming
+ufw default deny incoming
 ufw allow OpenSSH
+ufw allow http
+ufw allow https
 ufw --force enable
+
 
 echo "Copying the SSH config from the root user to the new user, so that you can SSH in as the new user."
 rsync --archive --chown=$username:$username ~/.ssh /home/$username
