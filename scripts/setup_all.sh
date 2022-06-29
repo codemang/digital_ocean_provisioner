@@ -15,10 +15,8 @@ script_dir="${0%/*}"
 
 su $username -c ./$script_dir/setup_docker.sh
 su $username -c ./$script_dir/setup_github_ssh_key.sh
-
-# We need to first cd into the home directory before running this script, since
-# it creates a proxy directory for us.
 su $username -c "./$script_dir/setup_nginx_proxy.sh $email"
+su $username -c ./$script_dir/setup_app_deployer.sh
 
 echo "All done! Rebooting so new configs can take effect."
 sudo reboot
