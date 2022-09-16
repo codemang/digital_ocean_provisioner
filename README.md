@@ -35,18 +35,16 @@ To set up a new DigitalOcean droplet, do the following:
         Port 22
     ```
 
-## Installing Docker
+## What's Configured On The New Droplet?
 
-1. Run the Docker set up script.
+This repo configures a new Droplet to run my specific projects, therefore, it's a bit opinionated about what to install. Here is a high-level overview of what's installed and configured:
 
-    ```bash
-    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_docker.sh | bash
-    ```
+1. Creates a non-root user with sudo access.
+1. Disables password authentication for that user and only allows SSH access.
+1. Sets up a basic firewall that only allows SSH, HTTP, and HTTPS connections on the expected ports.
+1. Adds 4GB of swap memories since these are small machines.
+1. Enables the native DigitalOcean metric collection.
+1. Installs Docker and Docker-Compose
+1. Sets up an Nginx reverse proxy and a LetsEncrypt container so that all my apps can run on a subdomain with SSL.
+1. Clones a GitHub repo that enables me to deploy my apps to the Droplet via a single CLI command.
 
-## Adding a GitHub SSH Key
-
-1. Run the set up set up script.
-
-    ```bash
-    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_github_ssh_key.sh | bash
-    ```
