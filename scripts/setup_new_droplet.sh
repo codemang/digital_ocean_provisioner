@@ -27,12 +27,16 @@ ufw --force enable
 
 echo "Copying the SSH config from the root user to the new user, so that you can SSH in as the new user."
 rsync --archive --chown=$username:$username ~/.ssh /home/$username
-
+# https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
 echo "Adding 4GB of swap memory."
-sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4024
-sudo /sbin/mkswap /var/swap.1
-sudo /sbin/swapon /var/swap.1
-sudo sh -c 'echo "/var/swap.1 swap swap defaults 0 0 " >> /etc/fstab'
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+sudo sysctl vm.swappiness=10
+echo "vm.swappiness=10" >> /etc/sysctl.conf
 
 # https://docs.digitalocean.com/products/monitoring/how-to/install-agent/
 echo "Enabling advanced metrics."
