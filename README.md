@@ -22,7 +22,7 @@ To set up a new DigitalOcean droplet, do the following:
   statement with the username you want to use for the new user on the droplet**:
 
     ```bash
-    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/setup_new_droplet.sh | bash -s new_username
+    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/scripts/setup_all.sh | bash -s new_username
     ```
 
 1. Add the droplet to your SSH config. Once you do that, you can ssh in by doing
