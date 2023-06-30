@@ -18,11 +18,15 @@ To set up a new DigitalOcean droplet, do the following:
 
 1. SSH into your new droplet: `ssh root@IP-ADDRESS`.
 
-1. Run the set up script. **Make sure to replace "username" at the end of the
-  statement with the username you want to use for the new user on the droplet**:
+1. Clone the repo
+
+1. Run the set up script.
+    - **Make sure to replace the `<username>` and `<email_address>` CLI args at the end of the command.**
+    - `username` will be used as the name for the new linux system user (i.e you can ssh into the machine as that user).
+    - 'email_address' will be used by
 
     ```bash
-    curl -s https://raw.githubusercontent.com/codemang/digital_ocean_provisioner/master/scripts/setup_all.sh | bash -s new_username
+    ./scripts/setup_digital_ocean_droplet.sh  <new_username> <email_address>
     ```
 
 1. Add the droplet to your SSH config. Once you do that, you can ssh in by doing
