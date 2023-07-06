@@ -11,6 +11,7 @@ email=$2
 # https://unix.stackexchange.com/a/273348
 script_dir="${0%/*}"
 
+sudo ./$script_dir/modules/upgrade_apt_packages.sh
 sudo ./$script_dir/modules/add_primary_user.sh $username
 sudo ./$script_dir/modules/copy_root_ssh_config.sh $username
 sudo ./$script_dir/modules/setup_firewall.sh

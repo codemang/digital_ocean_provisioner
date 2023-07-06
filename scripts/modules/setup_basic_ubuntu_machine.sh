@@ -11,6 +11,7 @@ fi
 username=$1
 echo "Setting up a new droplet for user: $username"
 
+./modules/upgrade_apt_packages.sh
 ./modules/add_primary_user.sh
 ./modules/setup_firewall.sh
 ./modules/add_swap_memory.sh
