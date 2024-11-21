@@ -18,7 +18,11 @@ To set up a new DigitalOcean droplet, do the following:
 
 1. SSH into your new droplet: `ssh root@IP-ADDRESS`.
 
-1. Clone the repo
+1. Clone the repo and cd into it:
+
+    ```
+    git clone https://github.com/codemang/digital_ocean_provisioner.git; cd digital_ocean_provisioner
+    ```
 
 1. Run the set up script.
     - **Make sure to replace the `<username>` and `<email_address>` CLI args at the end of the command.**
@@ -51,4 +55,3 @@ This repo configures a new Droplet to run my specific projects, therefore, it's 
 1. Installs Docker and Docker-Compose
 1. Sets up an Nginx reverse proxy and a LetsEncrypt container so that all my apps can run on a subdomain with SSL.
 1. Clones a GitHub repo that enables me to deploy my apps to the Droplet via a single CLI command.
-
